@@ -1,0 +1,6 @@
+spark采坑日志（二）
+执行DATAPROCESS时，APPEND的方式时，由于大量的JOIN产生，内存消耗过大，因此不考虑该方法
+
+在全量PROCESS和写入时，发现总内存MEMORY为56G，实际使用了24G；
+在YARN中的Maximum Allocation为11.5G，为Excuter最大的内存；该进程配置了两个Excuter
+导致内存不够，是否需要对YARN做配置？如果需要是应该增加Excuter数量，还是增大Excuter内存
